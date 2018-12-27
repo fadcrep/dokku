@@ -164,7 +164,7 @@ teardown () {
   echo "output: $output"
   echo "status: $status"
   assert_success
-  run bash -c "curl --silent --write-out '%{http_code}\n' `dokku url $TEST_APP` | grep 200"
+  run /bin/bash -c "curl --silent --write-out '%{http_code}\n' `dokku url $TEST_APP` | grep 200"
   echo "output: "$output
   echo "status: "$status
   assert_success
