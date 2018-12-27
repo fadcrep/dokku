@@ -189,14 +189,14 @@ func PostAppCloneSetup(appName string) bool {
 	ipFiles, _ := filepath.Glob(appRoot + "/IP.*")
 	for _, file := range ipFiles {
 		if err := os.Remove(file); err != nil {
-			LogWarn(fmt.Sprintf("Unable to remove file %s", file))
+			common.LogWarn(fmt.Sprintf("Unable to remove file %s", file))
 			success = false
 		}
 	}
 	portFiles, _ := filepath.Glob(appRoot + "/PORT.*")
 	for _, file := range portFiles {
 		if err := os.Remove(file); err != nil {
-			LogWarn(fmt.Sprintf("Unable to remove file %s", file))
+			common.LogWarn(fmt.Sprintf("Unable to remove file %s", file))
 			success = false
 		}
 	}
