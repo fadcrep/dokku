@@ -151,10 +151,10 @@ teardown () {
   run /bin/bash -c "dokku --trace apps:clone --skip-deploy $TEST_APP great-test-name"
   echo "output: $output"
   echo "status: $status"
-  assert_failure
+  assert_success
   run /bin/bash -c "curl --silent --write-out '%{http_code}\n' `dokku url $TEST_APP` | grep 200"
-  echo "output: "$output
-  echo "status: "$status
+  echo "output: $output"
+  echo "status: $status"
   assert_success
   run /bin/bash -c "curl --silent --write-out '%{http_code}\n' `dokku url great-test-name` | grep 404"
   echo "output: $output"
@@ -163,10 +163,10 @@ teardown () {
   run /bin/bash -c "dokku --force --trace apps:destroy great-test-name"
   echo "output: $output"
   echo "status: $status"
-  assert_success
+  assert_failure
   run /bin/bash -c "curl --silent --write-out '%{http_code}\n' `dokku url $TEST_APP` | grep 200"
-  echo "output: "$output
-  echo "status: "$status
+  echo "output: $output"
+  echo "status: $status"
   assert_success
 }
 
